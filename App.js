@@ -7,9 +7,73 @@ import {
   Dimensions
 } from 'react-native';
 
-import MapView from 'react-native-maps';
+import MapView,{Marker} from 'react-native-maps';
 import Polyline from '@mapbox/polyline';
 
+const customStyle = 
+  [
+    {
+      "stylers": [
+          {
+              "saturation": -100
+          }
+      ]
+  },
+  {
+      "featureType": "water",
+      "elementType": "geometry.fill",
+      "stylers": [
+          {
+              "color": "#4db8ff"
+          }
+      ]
+  },
+  {
+      "elementType": "labels",
+      "stylers": [
+          {
+              "visibility": "on"
+          }
+      ]
+  },
+  {
+      "featureType": "poi.park",
+      "elementType": "geometry.fill",
+      "stylers": [
+          {
+              "color": "#aadd55"
+          }
+      ]
+  },
+  {
+      "featureType": "road.highway",
+      "elementType": "labels",
+      "stylers": [
+          {
+              "visibility": "on"
+          }
+      ]
+  },
+  {
+      "featureType": "road.arterial",
+      "elementType": "labels.text",
+      "stylers": [
+          {
+              "visibility": "on"
+          }
+      ]
+  },
+  {
+      "featureType": "road.local",
+      "elementType": "labels.text",
+      "stylers": [
+          {
+              "visibility": "on"
+          }
+      ]
+  },
+
+  ];
 export default class RnDirectionsApp extends Component {
   constructor(props) {
     super(props)
@@ -51,12 +115,66 @@ export default class RnDirectionsApp extends Component {
           longitude:79.8549, 
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421
-        }}>
+        }}
+        customMapStyle={customStyle}
+        >
+         {/* Nugegoda */}
+         <Marker
+            coordinate={{
+              title:'Hutch',
+              latitude:  6.8649,
+              longitude: 79.8997,
+              }}
+              pinColor='#ec6708'
+          />
+          {/* Rajagiriya */}
+          <Marker
+            coordinate={{
+              title:'Hutch',
+              latitude:  6.9094,
+              longitude: 79.8943,
+              }}
+              pinColor='#ec6708'
+          />
+          {/* Navala */}
+          <Marker
+            coordinate={{
+              title:'Hutch',
+              latitude:  6.8964,
+              longitude: 79.8885,
+              }}
+              pinColor='#ec6708'
+          />
+          {/* Dehiwala */}
+          <Marker
+            coordinate={{
+              title:'Hutch',
+              latitude:  6.8301,
+              longitude: 79.8801,
+              }}
+              pinColor='#ec6708'
+          />
+
+          {/* Bambalapitiya */}
+          <Marker
+            coordinate={{
+              title:'Hutch',
+              latitude:  6.9010,
+              longitude: 79.8549,
+              // latitude:  initialRegion.latitude,
+              // longitude: initialRegion.longitude,
+
+              }}
+              pinColor='#ec6708'
+          />
+
 
         <MapView.Polyline 
             coordinates={this.state.coords}
-            strokeWidth={2}
-            strokeColor="red"/>
+            strokeWidth={5}
+            strokeColor="#ec6708"
+            
+            />
 
         </MapView>
       </View>
